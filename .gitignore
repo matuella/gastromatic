@@ -1,4 +1,5 @@
 target/
 nb-configuration.xml
-.gradle/
+node_modules/
 build/
+dist/

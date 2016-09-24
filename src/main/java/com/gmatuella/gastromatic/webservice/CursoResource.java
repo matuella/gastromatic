@@ -28,18 +28,21 @@ public class CursoResource {
     }
 
     @POST
+    @Path("/addCurso")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insertCurso(Curso curso) {
+    public void addCurso(Curso curso) {
         cursoService.save(curso);
     }
 
     @GET
+    @Path("/getCursos")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Curso> getCursos() {
         return cursoService.listAll();
     }
 
     @PUT
+    @Path("/editCurso")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public void editCurso(Curso curso) {
@@ -47,6 +50,7 @@ public class CursoResource {
     }
 
     @DELETE
+    @Path("/deleteCurso")
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteCurso(Curso curso) {
         cursoService.delete(cursoService.find(curso));
