@@ -3,3 +3,7 @@ nb-configuration.xml
 node_modules/
 build/
 dist/
+.settings/
+.project
+.classpath
+.idea/
