@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.gmatuella.gastromatic.entity.Curso;
 
 @Repository
-public interface CursoService extends CrudRepository<Curso, Long>{
+public interface CursoRepository extends CrudRepository<Curso, Long>{
+
 //	public List<Curso> listAll() {
 //		final EntityManager em = emf.createManager();
 //		final List<Curso> allCursos = em.createQuery(("FROM " + Curso.class.getName())).getResultList();
