@@ -1,23 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Gastromatic Test</title>
-        <link rel="stylesheet" href="">
-        <link rel="stylesheet" href="resources/css/style.css">
-    </head>
-    <body>
-        <div class="row">
-            <div class="small-10 columns" style="background: green;">
-                <p class="text-center">Gastromatic</p>
-            </div>
-            <div class="small-2 columns" style="background: blue;">
-            </div>
-        </div>
-        <div>
-            <p>Olar mundo</p>
-        </div>
+<head>
+<title>Gastromatic Test</title>
+<link rel="stylesheet" href="resources/dist/css-dependencies.css">
+<link rel="stylesheet" href="resources/dist/styles.css">
+</head>
+<body ng-app="gastromaticApp">
+	<!-- Header -->
+	<div class="expanded row">
+		<div class="small-12 columns" style="background: green;">
+			<h4 class="text-center">Gastromatic</h4>
+		</div>
+	</div>
+	<!-- Navheader -->
+	<div class="expanded row">
+		<ul class="dropdown menu" data-dropdown-menu>
+			<li><a href="#">Item 1</a>
+				<ul class="menu">
+					<li><a href="#">Item 1A</a></li>
+					<!-- ... -->
+				</ul></li>
+			<li><a href="#">Item 2</a></li>
+			<li><a href="#">Item 3</a></li>
+			<li><a href="#">Item 4</a></li>
+		</ul>
+	</div>
+	<!-- Page content -->
+	<div class="expanded row" ng-controller="CursoController">
+		<div class="small-12 columns" style="background: green;">
+			<h2 class="text-center">Cursos</h2>
+		</div>
+		<form>
+			<div class="small-12 medium-6 columns">
+				<h2 class="text-center">Cadastrar</h2>
+				Nome: <input type="text" ng-model="curso.nome"><br>
+				Detalhes: <input type="text" ng-model="curso.detalhes">
+				<button type="button" class="success button" ng-click="addCurso(curso)">Cadastrar</button>
+			</div>
+			<div class="small-12 medium-6 columns">
+				<h2 class="text-center">Pesquisar</h2>
+				Nome: <input type="text" ng-model="curso.nome"><br>
+				<button type="button" class="button" ng-click="addCurso(curso)">Pesquisar</button>
+				<table class="table table-hover">
+                      <thead>
+                          <tr>
+                              <th>Nome</th>
+                              <th>Detalhes</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="cur in cursos">
+                              <td><span ng-bind="cur.nome"></span></td>
+                              <td><span ng-bind="cur.detalhes"></span></td>
+                          </tr>
+                      </tbody>
+                  </table>
+			</div>
+		</form>
+	</div>
 
-        <script src="../../../node_modules/angular/angular.js"></script>
-    </body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-resource.js"></script>
+	<script src="resources/scripts/app.js"></script>
+	<script src="resources/scripts/services.js"></script>
+	<script src="resources/scripts/controllers.js"></script>
+	<script>$(document).foundation();</script>
+</body>
 </html>
 

@@ -1,7 +1,7 @@
 {
   "name": "gastromatic",
-  "config" : { 
-    "prefix" : "./src/main/webapp/resources/" 
+  "config": {
+    "prefix": "./src/main/webapp/resources/"
   },
   "version": "1.0.0",
   "description": "",
@@ -23,7 +23,8 @@
     "angular": "^1.5.8",
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
-    "foundation-sites": "^6.2.3"
+    "foundation-sites": "^6.2.3",
+    "jquery": "^3.1.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
