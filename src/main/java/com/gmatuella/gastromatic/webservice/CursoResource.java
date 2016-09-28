@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +32,7 @@ public class CursoResource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/addCurso", consumes = "application/json")
-	public void addCurso(@RequestParam(value = "curso") Curso curso) {
+	public void addCurso(@RequestBody Curso curso) {
 		cursoRepo.save(curso);
 	}
 
@@ -41,7 +42,7 @@ public class CursoResource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/editCurso", produces = "application/json", consumes = "application/json")
-	public Curso editCurso(@RequestParam(value = "curso") Curso curso) {
+	public Curso editCurso(@RequestBody Curso curso) {
 		return cursoRepo.save(curso);
 	}
 
