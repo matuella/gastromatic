@@ -28,12 +28,14 @@ gulp.task('js-deps', function() {
 	.pipe(gulp.dest(outputPath));
 });
 
+/*
 gulp.task('css-deps', function() {
 	gulp.src(npmCssDeps)
 	.pipe(concat('css-dependencies.css'))
 	.pipe(minify())
 	.pipe(gulp.dest(outputPath));
 });
+*/
 
 gulp.task('js', function() {
 	gulp.src(jsPath)
@@ -42,16 +44,18 @@ gulp.task('js', function() {
 	.pipe(gulp.dest(outputPath));
 });
 
+/*
 gulp.task('css', function() {
 	gulp.src(cssPath)
 	.pipe(concat('styles.css'))
 	.pipe(minify())
 	.pipe(gulp.dest(outputPath));
 });
+*/
 
 gulp.task('watch', function() {
-	gulp.watch(cssPath, [ 'css' ]);
+	/*gulp.watch(cssPath, [ 'css' ]);*/
 	gulp.watch(jsPath, [ 'js' ]);
 });
 
-gulp.task('default', [ 'watch', 'js-deps', 'css-deps', 'js', 'css' ]);
+gulp.task('default', [ 'watch', 'js-deps', 'js']);

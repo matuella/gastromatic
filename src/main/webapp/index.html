@@ -3,10 +3,10 @@
 <head>
 <title>Gastromatic Test</title>
 <link rel="stylesheet" href="resources/scripts/foundation/css/foundation.css">
-<link rel="stylesheet" href="resources/dist/styles.css">
+    <link rel="stylesheet" href="resources/css/base.css">
 </head>
-<body ng-app="gastromaticApp">
-	<!-- Header -->
+<body ng-app="gastromaticApp" class="background">
+	<!-- Mainheader -->
 	<div class="expanded row">
 		<div class="small-12 columns" style="background: green;">
 			<h4 class="text-center">Gastromatic</h4>
@@ -26,8 +26,8 @@
 	</div>
 	<!-- Page content -->
 	<div class="expanded row" ng-controller="CursoController">
-		<div class="small-12 columns" style="background: green;">
-			<h2 class="text-center">Cursos</h2>
+		<div class="small-12 columns" style="border: 5px solid black; padding: 0px; margin: 0px; background: green;">
+			<h2 class="text-center" >Cursos</h2>
 		</div>
 		<form>
 			<div class="small-12 medium-6 columns">
@@ -61,12 +61,16 @@
 	<script src="resources/scripts/foundation/js/vendor/jquery.js"></script>
 	<script src="resources/scripts/foundation/js/vendor/what-input.js"></script>
 	<script src="resources/scripts/foundation/js/vendor/foundation.js"></script>
+<!--
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-resource.js"></script>
+-->
+<!--
 	<script src="resources/scripts/app.js"></script>
 	<script src="resources/scripts/services.js"></script>
 	<script src="resources/scripts/controllers.js"></script>
+-->
 	<script>$(document).foundation();</script>
 </body>
 </html>

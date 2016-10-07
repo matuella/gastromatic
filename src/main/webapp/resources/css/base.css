@@ -1,1 +1,6 @@
-
+.background {
+    background-image: url(../images/blurred-bg-green.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
