@@ -1,9 +1,11 @@
-module.exports = function($scope, CursoFactory) {
+'use strict';
 
-	$scope.cursos = CursoFactory.query();
+module.exports = function($scope, CursoService) {
+
+	$scope.cursos = CursoService.query();
 
 	$scope.addCurso = function(curso) {
-		CursoFactory.create(curso);
+		CursoService.create(curso);
 		curso = null;
 	};
 }

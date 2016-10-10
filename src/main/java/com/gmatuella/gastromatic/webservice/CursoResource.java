@@ -20,33 +20,33 @@ import com.gmatuella.gastromatic.service.CursoRepository;
  */
 @RestController
 @EnableAutoConfiguration
-@RequestMapping(value = "/cursos")
+@RequestMapping(value = "/curso")
 public class CursoResource {
 
 	@Autowired
 	private CursoRepository cursoRepo;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{cursoId}", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/findCurso/{cursoId}", produces = "application/json")
 	public void findCurso(@RequestParam(value = "cursoId") Long cursoId) {
 		cursoRepo.findOne(cursoId);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/addCurso", method = RequestMethod.POST, consumes = "application/json")
 	public void addCurso(@RequestBody Curso curso) {
 		cursoRepo.save(curso);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/listCursos", method = RequestMethod.GET, produces = "application/json")
 	public List<Curso> listCursos() {
 		return (List) cursoRepo.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
+	@RequestMapping(value = "/editCurso", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
 	public Curso editCurso(@RequestBody Curso curso) {
 		return cursoRepo.save(curso);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/{cursoId}", consumes = "application/json")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/deleteCurso/{cursoId}", consumes = "application/json")
 	public void deleteCurso(@RequestParam(value = "cursoId") Long cursoId) {
 		cursoRepo.delete(cursoId);
 	}

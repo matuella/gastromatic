@@ -18,13 +18,13 @@ const npmJsDeps = [
    './node_modules/angular-route/angular-route.min.js'
 ];
 
-const outputPath = "./src/main/webapp/dist";
+const outputPath = "./src/main/webapp/resources/dist";
 
 gulp.task('browserify', function() {
     return browserify({ entries: ['./src/main/webapp/resources/scripts/app.js'] })
         .bundle()
         .pipe(source('scripts.js'))
-        .pipe(gulp.dest(outputPath + '/js'));
+        .pipe(gulp.dest(outputPath));
 });
 
 //gulp.task('js', function() {
