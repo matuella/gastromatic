@@ -38,4 +38,4 @@ gulp.task('browserify', function() {
 //	gulp.watch(jsPath, [ 'js' ]);
 //});
 
-gulp.task('default', [ 'watch', 'js-deps']);
+gulp.task('default', [ 'browserify']);
