@@ -51,9 +51,4 @@ public class CursoResource {
 		cursoRepo.delete(cursoId);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/teste", produces = "application/json")
-	public Curso teste() {
-		return new Curso();
-	}
-
 }
