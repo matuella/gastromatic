@@ -1,77 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Gastromatic Test</title>
-<link rel="stylesheet" href="resources/scripts/foundation/css/foundation.css">
-    <link rel="stylesheet" href="resources/css/base.css">
+<title>Gastromatic API</title>
 </head>
-<body ng-app="gastromaticApp" class="background">
-	<!-- Mainheader -->
-	<div class="expanded row">
-		<div class="small-12 columns" style="background: green;">
-			<h4 class="text-center">Gastromatic</h4>
-		</div>
-	</div>
-	<!-- Navheader -->
-	<div class="expanded row">
-		<ul class="dropdown menu" data-dropdown-menu>
-			<li><a href="#">Item 1</a>
-				<ul class="menu">
-					<li><a href="#">Item 1A</a></li>
-				</ul></li>
-			<li><a href="#">Item 2</a></li>
-			<li><a href="#">Item 3</a></li>
-			<li><a href="#">Item 4</a></li>
-		</ul>
-	</div>
-	<!-- Page content -->
-	<div class="expanded row" ng-controller="CursoController">
-		<div class="small-12 columns" style="border: 5px solid black; padding: 0px; margin: 0px; background: green;">
-			<h2 class="text-center" >Cursos</h2>
-		</div>
-		<form>
-			<div class="small-12 medium-6 columns">
-				<h2 class="text-center">Cadastrar</h2>
-				Nome: <input type="text" ng-model="curso.nome"><br>
-				Detalhes: <input type="text" ng-model="curso.detalhes">
-				<button type="button" class="success button" ng-click="addCurso(curso)">Cadastrar</button>
-			</div>
-			<div class="small-12 medium-6 columns">
-				<h2 class="text-center">Pesquisar</h2>
-				Nome: <input type="text" ng-model="curso.nome"><br>
-				<button type="button" class="button" ng-click="addCurso(curso)">Pesquisar</button>
-				<table class="table table-hover">
-                      <thead>
-                          <tr>
-                              <th>Nome</th>
-                              <th>Detalhes</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr ng-repeat="cur in cursos">
-                              <td><span ng-bind="cur.nome"></span></td>
-                              <td><span ng-bind="cur.detalhes"></span></td>
-                          </tr>
-                      </tbody>
-                  </table>
-			</div>
-		</form>
-	</div>
-
-	<script src="resources/scripts/foundation/js/vendor/jquery.js"></script>
-	<script src="resources/scripts/foundation/js/vendor/what-input.js"></script>
-	<script src="resources/scripts/foundation/js/vendor/foundation.js"></script>
-<!--
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-resource.js"></script>
--->
-<!--
-	<script src="resources/scripts/app.js"></script>
-	<script src="resources/scripts/services.js"></script>
-	<script src="resources/scripts/controllers.js"></script>
--->
-	<script>$(document).foundation();</script>
+<body>
+	<h1>This is the index of the Gastromatic API provider.</h1>
+	<p>This API is part (whole back-end at the moment) of a microservices architecture.</p>
 </body>
 </html>
 
