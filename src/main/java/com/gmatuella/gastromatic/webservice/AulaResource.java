@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gmatuella.gastromatic.entity.Aula;
 import com.gmatuella.gastromatic.entity.Curso;
+import com.gmatuella.gastromatic.entity.Roteiro;
+import com.gmatuella.gastromatic.repository.AulaRepository;
 import com.gmatuella.gastromatic.repository.CursoRepository;
+import com.gmatuella.gastromatic.repository.RoteiroRepository;
 
 /**
  * REST Web Service
@@ -20,36 +24,35 @@ import com.gmatuella.gastromatic.repository.CursoRepository;
  */
 @RestController
 @EnableAutoConfiguration
-@RequestMapping(value = "/curso")
-public class CursoResource {
+@RequestMapping(value = "/aula")
+public class AulaResource {
 
 	@Autowired
-	private CursoRepository cursoRepo;
+	private AulaRepository aulaRepo;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/find/{cursoId}", produces = "application/json")
-	public void findCurso(@RequestParam(value = "cursoId") Long cursoId) {
-		cursoRepo.findOne(cursoId);
+	@RequestMapping(method = RequestMethod.GET, value = "/find/{aulaId}", produces = "application/json")
+	public void findAula(@RequestParam(value = "aulaId") Long aulaId) {
+		aulaRepo.findOne(aulaId);
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json")
-	public void addCurso(@RequestBody Curso curso) {
-		cursoRepo.save(curso);
+	public void addAula(@RequestBody Aula aula) {
+		aulaRepo.save(aula);
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
-	public List<Curso> listCursos() {
-		List<Curso> teste = cursoRepo.findAllByOrderByNomeDesc();
-		return teste;
+	public List<Aula> listAulas() {
+		return (List<Aula>) aulaRepo.findAll();
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public Curso editCurso(@RequestBody Curso curso) {
-		return cursoRepo.save(curso);
+	public Aula editAula(@RequestBody Aula aula) {
+		return aulaRepo.save(aula);
 	}
 
-	@RequestMapping(value = "/deleteCurso/{cursoId}", method = RequestMethod.DELETE, consumes = "application/json")
-	public void deleteCurso(@RequestParam(value = "cursoId") Long cursoId) {
-		cursoRepo.delete(cursoId);
+	@RequestMapping(value = "/delete/{aulaId}", method = RequestMethod.DELETE, consumes = "application/json")
+	public void deleteAula(@RequestParam(value = "aulaId") Long aulaId) {
+		aulaRepo.delete(aulaId);
 	}
 
 }

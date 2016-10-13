@@ -1,14 +1,11 @@
 package com.gmatuella.gastromatic.repository;
 
-import java.util.List;
-
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.gmatuella.gastromatic.entity.Curso;
+import com.gmatuella.gastromatic.entity.Roteiro;
 
 @RepositoryRestResource
-public interface CursoRepository extends PagingAndSortingRepository<Curso, Long>{
+public interface RoteiroRepository extends PagingAndSortingRepository<Roteiro, Long>{
 
-	public List<Curso> findAllByOrderByNomeDesc();
 }

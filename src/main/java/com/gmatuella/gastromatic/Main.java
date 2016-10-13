@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.gmatuella.gastromatic.entity"
         })
 @EnableJpaRepositories(basePackages = {
-        "com.gmatuella.gastromatic.service"
+        "com.gmatuella.gastromatic.repository"
         })
 public class Main extends SpringBootServletInitializer {
 

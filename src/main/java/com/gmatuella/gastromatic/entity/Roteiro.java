@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -24,10 +23,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "nome" }) })
 @XmlRootElement
-public class Curso implements Serializable {
+public class Roteiro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final String SEQ = "curso_seq";
+	private static final String SEQ = "roteiro_seq";
 
 	@Id
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
@@ -37,49 +36,75 @@ public class Curso implements Serializable {
 	private String nome;
 	@Column(length = 500)
 	private String detalhes;
+	@ManyToMany(mappedBy = "roteiros", cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	private List<Curso> cursos;
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
-	private List<Roteiro> roteiros;
-	
-	public void addRoteiro(Roteiro roteiro){
-		if(Objects.isNull(this.roteiros)){
-			this.roteiros = new ArrayList<>();
-		}		
-		this.roteiros.add(roteiro);
-		roteiro.addCurso(this);
+	private List<Aula> aulas;
+
+	public void addCurso(Curso curso) {
+		if (Objects.isNull(this.cursos)) {
+			this.cursos = new ArrayList<>();
+		}
+		this.cursos.add(curso);
 	}
-	
+
+	public void addAula(Aula aula) {
+		if (Objects.isNull(this.aulas)) {
+			this.aulas = new ArrayList<>();
+		}
+		this.aulas.add(aula);
+		aula.addRoteiro(this);
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getDetalhes() {
 		return detalhes;
 	}
+
 	public void setDetalhes(String detalhes) {
 		this.detalhes = detalhes;
 	}
-	public List<Roteiro> getRoteiros() {
-		return roteiros;
+
+	public List<Curso> getCursos() {
+		return cursos;
 	}
-	public void setRoteiros(List<Roteiro> roteiros) {
-		this.roteiros = roteiros;
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
 	}
+
+	public List<Aula> getAulas() {
+		return aulas;
+	}
+
+	public void setAulas(List<Aula> aulas) {
+		this.aulas = aulas;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((aulas == null) ? 0 : aulas.hashCode());
+		result = prime * result + ((cursos == null) ? 0 : cursos.hashCode());
 		result = prime * result + ((detalhes == null) ? 0 : detalhes.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((roteiros == null) ? 0 : roteiros.hashCode());
 		return result;
 	}
 
@@ -91,7 +116,17 @@ public class Curso implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Curso other = (Curso) obj;
+		Roteiro other = (Roteiro) obj;
+		if (aulas == null) {
+			if (other.aulas != null)
+				return false;
+		} else if (!aulas.equals(other.aulas))
+			return false;
+		if (cursos == null) {
+			if (other.cursos != null)
+				return false;
+		} else if (!cursos.equals(other.cursos))
+			return false;
 		if (detalhes == null) {
 			if (other.detalhes != null)
 				return false;
@@ -106,11 +141,6 @@ public class Curso implements Serializable {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
-			return false;
-		if (roteiros == null) {
-			if (other.roteiros != null)
-				return false;
-		} else if (!roteiros.equals(other.roteiros))
 			return false;
 		return true;
 	}

@@ -2,7 +2,6 @@ package com.gmatuella.gastromatic.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,20 +21,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Requisicao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	private static final String SEQ = "requisicao_seq";
+	
 	@Id
-	@SequenceGenerator(name = "requisicao_seq", sequenceName = "requisicao_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "requisicao_seq")
+	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = SEQ)
 	private Long id;
-	@Column(length = 100, name = "USUARIO", nullable = false)
+	@Column(length = 100, nullable = false)
 	private String usuario;
 	@Column(name = "DATA_REQUISICAO", nullable = false)
 	private LocalDateTime dataRequisicao;
-	@Column(length = 100, name = "NOTA", nullable = false)
+	@Column(length = 100)
 	private String nota;
-	@Column(length = 50, name = "TIPO", nullable = false)
+	@Column(length = 50)
 	private String tipo;
-	@Column(name = "VALOR", nullable = false)
 	private Double valor;
 //	@Column(length = 100, name = "IMG_NOTA", nullable = false)
 //	private byte[] imgNota;
