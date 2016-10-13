@@ -38,8 +38,7 @@ public class CursoResource {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
 	public List<Curso> listCursos() {
-		List<Curso> teste = cursoRepo.findAllByOrderByNomeDesc();
-		return teste;
+		return cursoRepo.findAllByOrderByNomeAsc();
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")

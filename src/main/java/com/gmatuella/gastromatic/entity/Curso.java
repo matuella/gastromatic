@@ -37,7 +37,7 @@ public class Curso implements Serializable {
 	private String nome;
 	@Column(length = 500)
 	private String detalhes;
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@OneToMany(mappedBy = "curso", cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Roteiro> roteiros;
 	
 	public void addRoteiro(Roteiro roteiro){
@@ -45,7 +45,6 @@ public class Curso implements Serializable {
 			this.roteiros = new ArrayList<>();
 		}		
 		this.roteiros.add(roteiro);
-		roteiro.addCurso(this);
 	}
 	
 	public Long getId() {

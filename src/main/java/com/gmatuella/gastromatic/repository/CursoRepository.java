@@ -10,5 +10,5 @@ import com.gmatuella.gastromatic.entity.Curso;
 @RepositoryRestResource
 public interface CursoRepository extends PagingAndSortingRepository<Curso, Long>{
 
-	public List<Curso> findAllByOrderByNomeDesc();
+	public List<Curso> findAllByOrderByNomeAsc();
 }

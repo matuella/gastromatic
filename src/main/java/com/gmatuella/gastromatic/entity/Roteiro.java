@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -36,17 +37,10 @@ public class Roteiro implements Serializable {
 	private String nome;
 	@Column(length = 500)
 	private String detalhes;
-	@ManyToMany(mappedBy = "roteiros", cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
-	private List<Curso> cursos;
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	private Curso curso;
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Aula> aulas;
-
-	public void addCurso(Curso curso) {
-		if (Objects.isNull(this.cursos)) {
-			this.cursos = new ArrayList<>();
-		}
-		this.cursos.add(curso);
-	}
 
 	public void addAula(Aula aula) {
 		if (Objects.isNull(this.aulas)) {
@@ -80,12 +74,12 @@ public class Roteiro implements Serializable {
 		this.detalhes = detalhes;
 	}
 
-	public List<Curso> getCursos() {
-		return cursos;
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 
 	public List<Aula> getAulas() {
@@ -101,7 +95,7 @@ public class Roteiro implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((aulas == null) ? 0 : aulas.hashCode());
-		result = prime * result + ((cursos == null) ? 0 : cursos.hashCode());
+		result = prime * result + ((curso == null) ? 0 : curso.hashCode());
 		result = prime * result + ((detalhes == null) ? 0 : detalhes.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -122,10 +116,10 @@ public class Roteiro implements Serializable {
 				return false;
 		} else if (!aulas.equals(other.aulas))
 			return false;
-		if (cursos == null) {
-			if (other.cursos != null)
+		if (curso == null) {
+			if (other.curso != null)
 				return false;
-		} else if (!cursos.equals(other.cursos))
+		} else if (!curso.equals(other.curso))
 			return false;
 		if (detalhes == null) {
 			if (other.detalhes != null)
