@@ -27,6 +27,8 @@ public class RoteiroResource {
 
 	@Autowired
 	private RoteiroRepository roteiroRepo;
+	@Autowired
+	private CursoRepository cursoRepo;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/find/{roteiroId}", produces = "application/json")
 	public void findCurso(@RequestParam(value = "roteiroId") Long roteiroId) {

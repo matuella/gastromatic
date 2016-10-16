@@ -18,12 +18,17 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
+
 /**
  * @author Guilherme Matuella
  */
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "nome" }) })
 @XmlRootElement
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Roteiro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -37,18 +42,10 @@ public class Roteiro implements Serializable {
 	private String nome;
 	@Column(length = 500)
 	private String detalhes;
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE })
 	private Curso curso;
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@ManyToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Aula> aulas;
-
-	public void addAula(Aula aula) {
-		if (Objects.isNull(this.aulas)) {
-			this.aulas = new ArrayList<>();
-		}
-		this.aulas.add(aula);
-		aula.addRoteiro(this);
-	}
 
 	public Long getId() {
 		return id;

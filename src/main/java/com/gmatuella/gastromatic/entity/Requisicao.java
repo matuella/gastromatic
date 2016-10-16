@@ -22,7 +22,7 @@ public class Requisicao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final String SEQ = "requisicao_seq";
-	
+
 	@Id
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = SEQ)
@@ -36,8 +36,8 @@ public class Requisicao implements Serializable {
 	@Column(length = 50)
 	private String tipo;
 	private Double valor;
-//	@Column(length = 100, name = "IMG_NOTA", nullable = false)
-//	private byte[] imgNota;
+	// @Column(length = 100, name = "IMG_NOTA", nullable = false)
+	// private byte[] imgNota;
 
 	public Long getId() {
 		return id;

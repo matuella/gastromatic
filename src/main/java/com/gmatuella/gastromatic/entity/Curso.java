@@ -11,12 +11,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 /**
  * @author Guilherme Matuella
@@ -24,6 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "nome" }) })
 @XmlRootElement
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Curso implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -39,38 +43,46 @@ public class Curso implements Serializable {
 	private String detalhes;
 	@OneToMany(mappedBy = "curso", cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Roteiro> roteiros;
-	
-	public void addRoteiro(Roteiro roteiro){
-		if(Objects.isNull(this.roteiros)){
+
+	public void addRoteiro(Roteiro roteiro) {
+		if (Objects.isNull(this.roteiros)) {
 			this.roteiros = new ArrayList<>();
-		}		
+		}
 		this.roteiros.add(roteiro);
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getDetalhes() {
 		return detalhes;
 	}
+
 	public void setDetalhes(String detalhes) {
 		this.detalhes = detalhes;
 	}
+
 	public List<Roteiro> getRoteiros() {
 		return roteiros;
 	}
+
 	public void setRoteiros(List<Roteiro> roteiros) {
 		this.roteiros = roteiros;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

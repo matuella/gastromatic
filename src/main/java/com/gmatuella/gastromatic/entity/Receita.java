@@ -26,9 +26,10 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "nome" }) })
 @XmlRootElement
 @JsonIdentityInfo(generator = JSOGGenerator.class)
-public class Aula implements Serializable {
+public class Receita implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	private static final String SEQ = "aula_seq";
+	private static final String SEQ = "receita_seq";
 
 	@Id
 	@SequenceGenerator(name = SEQ, sequenceName = SEQ, allocationSize = 1)
@@ -36,13 +37,8 @@ public class Aula implements Serializable {
 	private Long id;
 	@Column(length = 100, nullable = false)
 	private String nome;
-	@Column(length = 500)
-	private String detalhes;
-	@ManyToMany(mappedBy = "aulas", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
-	private List<Roteiro> roteiros;
-	@ManyToMany(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
-	private List<Receita> receitas;
-	private String usuario;
+	@ManyToMany(mappedBy = "receitas", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
+	private List<Aula> aulas;
 
 	public Long getId() {
 		return id;
@@ -60,48 +56,21 @@ public class Aula implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getDetalhes() {
-		return detalhes;
+	public List<Aula> getAulas() {
+		return aulas;
 	}
 
-	public void setDetalhes(String detalhes) {
-		this.detalhes = detalhes;
-	}
-
-	public List<Roteiro> getRoteiros() {
-		return roteiros;
-	}
-
-	public void setRoteiros(List<Roteiro> roteiros) {
-		this.roteiros = roteiros;
-	}
-
-	public List<Receita> getReceitas() {
-		return receitas;
-	}
-
-	public void setReceitas(List<Receita> receitas) {
-		this.receitas = receitas;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setAulas(List<Aula> aulas) {
+		this.aulas = aulas;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((detalhes == null) ? 0 : detalhes.hashCode());
+		result = prime * result + ((aulas == null) ? 0 : aulas.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((receitas == null) ? 0 : receitas.hashCode());
-		result = prime * result + ((roteiros == null) ? 0 : roteiros.hashCode());
-		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
 		return result;
 	}
 
@@ -113,11 +82,11 @@ public class Aula implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Aula other = (Aula) obj;
-		if (detalhes == null) {
-			if (other.detalhes != null)
+		Receita other = (Receita) obj;
+		if (aulas == null) {
+			if (other.aulas != null)
 				return false;
-		} else if (!detalhes.equals(other.detalhes))
+		} else if (!aulas.equals(other.aulas))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -128,21 +97,6 @@ public class Aula implements Serializable {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
-			return false;
-		if (receitas == null) {
-			if (other.receitas != null)
-				return false;
-		} else if (!receitas.equals(other.receitas))
-			return false;
-		if (roteiros == null) {
-			if (other.roteiros != null)
-				return false;
-		} else if (!roteiros.equals(other.roteiros))
-			return false;
-		if (usuario == null) {
-			if (other.usuario != null)
-				return false;
-		} else if (!usuario.equals(other.usuario))
 			return false;
 		return true;
 	}
