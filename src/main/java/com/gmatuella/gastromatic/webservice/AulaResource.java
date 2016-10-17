@@ -8,15 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gmatuella.gastromatic.entity.Aula;
-import com.gmatuella.gastromatic.entity.Curso;
-import com.gmatuella.gastromatic.entity.Roteiro;
 import com.gmatuella.gastromatic.repository.AulaRepository;
-import com.gmatuella.gastromatic.repository.CursoRepository;
-import com.gmatuella.gastromatic.repository.RoteiroRepository;
 
 /**
  * REST Web Service
@@ -32,13 +27,13 @@ public class AulaResource {
 	private AulaRepository aulaRepo;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/find/{aulaId}", produces = "application/json")
-	public void findAula(@PathVariable(value = "aulaId") Long aulaId) {
-		aulaRepo.findOne(aulaId);
+	public Aula findAula(@PathVariable(value = "aulaId") Long aulaId) {
+		return aulaRepo.findOne(aulaId);
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json")
-	public void addAula(@RequestBody Aula aula) {
-		aulaRepo.save(aula);
+	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public Aula addAula(@RequestBody Aula aula) {
+		return aulaRepo.save(aula);
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
@@ -46,13 +41,8 @@ public class AulaResource {
 		return (List<Aula>) aulaRepo.findAll();
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public Aula editAula(@RequestBody Aula aula) {
-		return aulaRepo.save(aula);
-	}
-
-	@RequestMapping(value = "/delete/{aulaId}", method = RequestMethod.DELETE, consumes = "application/json")
-	public void deleteAula(@RequestParam(value = "aulaId") Long aulaId) {
+	@RequestMapping(value = "/delete/{aulaId}", method = RequestMethod.DELETE)
+	public void deleteAula(@PathVariable(value = "aulaId") Long aulaId) {
 		aulaRepo.delete(aulaId);
 	}
 
