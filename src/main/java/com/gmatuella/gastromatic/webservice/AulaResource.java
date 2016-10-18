@@ -20,28 +20,28 @@ import com.gmatuella.gastromatic.repository.AulaRepository;
  */
 @RestController
 @EnableAutoConfiguration
-@RequestMapping(value = "/aula")
+@RequestMapping(value = "/aulas")
 public class AulaResource {
 
 	@Autowired
 	private AulaRepository aulaRepo;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/find/{aulaId}", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/{aulaId}", produces = "application/json")
 	public Aula findAula(@PathVariable(value = "aulaId") Long aulaId) {
 		return aulaRepo.findOne(aulaId);
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public Aula addAula(@RequestBody Aula aula) {
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public Aula saveAula(@RequestBody Aula aula) {
 		return aulaRepo.save(aula);
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<Aula> listAulas() {
 		return (List<Aula>) aulaRepo.findAll();
 	}
 
-	@RequestMapping(value = "/delete/{aulaId}", method = RequestMethod.DELETE)
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{aulaId}")
 	public void deleteAula(@PathVariable(value = "aulaId") Long aulaId) {
 		aulaRepo.delete(aulaId);
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,19 +21,19 @@ import com.gmatuella.gastromatic.repository.RequisicaoRepository;
  */
 @RestController
 @EnableAutoConfiguration
-@RequestMapping(value = "/requisicao")
+@RequestMapping(value = "/requisicoes")
 public class RequisicaoResource {
 
 	@Autowired
 	private RequisicaoRepository reqRepo;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{reqId}", produces = "application/json")
-	public void findRequisicao(@RequestParam(value = "reqId") Long reqId) {
+	public void findRequisicao(@PathVariable(value = "reqId") Long reqId) {
 		reqRepo.findOne(reqId);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public void addRequisicao(@RequestBody Requisicao req) {
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public Requisicao saveRequisicao(@RequestBody Requisicao req) {
 		reqRepo.save(req);
 	}
 

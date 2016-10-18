@@ -32,7 +32,7 @@ public class InsumoResource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public Insumo addInsumo(@RequestBody Insumo insumo) {
+	public Insumo saveInsumo(@RequestBody Insumo insumo) {
 		return insumoRepo.save(insumo);
 	}
 
@@ -41,7 +41,7 @@ public class InsumoResource {
 		return (List<Insumo>) insumoRepo.findAll();
 	}
 
-	@RequestMapping(value = "/{insumoId}", method = RequestMethod.DELETE)
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{insumoId}")
 	public void deleteInsumo(@PathVariable(value = "insumoId") Long insumoId) {
 		insumoRepo.delete(insumoId);
 	}

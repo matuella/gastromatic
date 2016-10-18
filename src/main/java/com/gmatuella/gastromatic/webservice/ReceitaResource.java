@@ -20,28 +20,28 @@ import com.gmatuella.gastromatic.repository.ReceitaRepository;
  */
 @RestController
 @EnableAutoConfiguration
-@RequestMapping(value = "/receita")
+@RequestMapping(value = "/receitas")
 public class ReceitaResource {
 
 	@Autowired
 	private ReceitaRepository receitaRepo;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/find/{receitaId}", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/{receitaId}", produces = "application/json")
 	public Receita findReceita(@PathVariable(value = "receitaId") Long receitaId) {
 		return receitaRepo.findOne(receitaId);
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public Receita addReceita(@RequestBody Receita receita) {
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public Receita saveReceita(@RequestBody Receita receita) {
 		return receitaRepo.save(receita);
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<Receita> listReceitas() {
 		return (List<Receita>) receitaRepo.findAll();
 	}
 
-	@RequestMapping(value = "/delete/{receitaId}", method = RequestMethod.DELETE)
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{receitaId}")
 	public void deleteReceita(@PathVariable(value = "receitaId") Long receitaId) {
 		receitaRepo.delete(receitaId);
 	}
