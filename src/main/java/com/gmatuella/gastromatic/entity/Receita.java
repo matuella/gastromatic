@@ -16,7 +16,6 @@ import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 /**
@@ -39,6 +38,8 @@ public class Receita implements Serializable {
 	private String nome;
 	@ManyToMany(mappedBy = "receitas", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Aula> aulas;
+	@ManyToMany(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
+	private List<Insumo> insumos;
 
 	public Long getId() {
 		return id;
@@ -64,12 +65,21 @@ public class Receita implements Serializable {
 		this.aulas = aulas;
 	}
 
+	public List<Insumo> getInsumos() {
+		return insumos;
+	}
+
+	public void setInsumos(List<Insumo> insumos) {
+		this.insumos = insumos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((aulas == null) ? 0 : aulas.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((insumos == null) ? 0 : insumos.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -92,6 +102,11 @@ public class Receita implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (insumos == null) {
+			if (other.insumos != null)
+				return false;
+		} else if (!insumos.equals(other.insumos))
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
