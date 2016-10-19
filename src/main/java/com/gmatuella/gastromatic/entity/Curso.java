@@ -40,7 +40,7 @@ public class Curso implements Serializable {
 	private String nome;
 	@Column(length = 500)
 	private String detalhes;
-	@OneToMany(mappedBy = "curso", cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@OneToMany(mappedBy = "curso", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Roteiro> roteiros;
 
 	public void addRoteiro(Roteiro roteiro) {

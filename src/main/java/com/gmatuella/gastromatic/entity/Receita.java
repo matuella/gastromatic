@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -38,8 +39,8 @@ public class Receita implements Serializable {
 	private String nome;
 	@ManyToMany(mappedBy = "receitas", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Aula> aulas;
-	@ManyToMany(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
-	private List<Insumo> insumos;
+	@OneToMany(mappedBy = "receita", cascade = { CascadeType.ALL })
+	private List<DetalheReceita> detalhesReceita;
 
 	public Long getId() {
 		return id;
@@ -65,12 +66,12 @@ public class Receita implements Serializable {
 		this.aulas = aulas;
 	}
 
-	public List<Insumo> getInsumos() {
-		return insumos;
+	public List<DetalheReceita> getDetalhesReceita() {
+		return detalhesReceita;
 	}
 
-	public void setInsumos(List<Insumo> insumos) {
-		this.insumos = insumos;
+	public void setDetalhesReceita(List<DetalheReceita> detalhesReceita) {
+		this.detalhesReceita = detalhesReceita;
 	}
 
 	@Override
@@ -78,8 +79,8 @@ public class Receita implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((aulas == null) ? 0 : aulas.hashCode());
+		result = prime * result + ((detalhesReceita == null) ? 0 : detalhesReceita.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((insumos == null) ? 0 : insumos.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -98,15 +99,15 @@ public class Receita implements Serializable {
 				return false;
 		} else if (!aulas.equals(other.aulas))
 			return false;
+		if (detalhesReceita == null) {
+			if (other.detalhesReceita != null)
+				return false;
+		} else if (!detalhesReceita.equals(other.detalhesReceita))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (insumos == null) {
-			if (other.insumos != null)
-				return false;
-		} else if (!insumos.equals(other.insumos))
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
