@@ -7,13 +7,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import com.gmatuella.gastromatic.entity.Curso;
+
 @SpringBootApplication
 @EntityScan(basePackages = {
         "com.gmatuella.gastromatic.entity"
         })
 @EnableJpaRepositories(basePackages = {
         "com.gmatuella.gastromatic.repository"
-        })
+        }, basePackageClasses = Curso.class)
 public class Main extends SpringBootServletInitializer {
 
     @Override

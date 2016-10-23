@@ -1,4 +1,4 @@
-package com.gmatuella.gastromatic.webservice;
+package com.gmatuella.gastromatic.service;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import com.gmatuella.gastromatic.repository.ReceitaRepository;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value = "/receitas")
-public class ReceitaResource {
+public class ReceitaService {
 
 	@Autowired
 	private ReceitaRepository receitaRepo;

@@ -1,4 +1,4 @@
-package com.gmatuella.gastromatic.webservice;
+package com.gmatuella.gastromatic.service;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import com.gmatuella.gastromatic.repository.RoteiroRepository;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value = "/roteiros")
-public class RoteiroResource {
+public class RoteiroService {
 
 	@Autowired
 	private RoteiroRepository roteiroRepo;

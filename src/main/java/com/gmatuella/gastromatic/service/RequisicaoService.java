@@ -1,4 +1,4 @@
-package com.gmatuella.gastromatic.webservice;
+package com.gmatuella.gastromatic.service;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import com.gmatuella.gastromatic.repository.RequisicaoRepository;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value = "/requisicoes")
-public class RequisicaoResource {
+public class RequisicaoService {
 
 	@Autowired
 	private RequisicaoRepository reqRepo;

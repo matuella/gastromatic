@@ -1,4 +1,4 @@
-package com.gmatuella.gastromatic.webservice;
+package com.gmatuella.gastromatic.service;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import com.gmatuella.gastromatic.repository.InsumoRepository;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value = "/insumos")
-public class InsumoResource {
+public class InsumoService {
 
 	@Autowired
 	private InsumoRepository insumoRepo;

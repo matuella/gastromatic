@@ -1,9 +1,7 @@
 package com.gmatuella.gastromatic.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,11 +41,20 @@ public class Curso implements Serializable {
 	@OneToMany(mappedBy = "curso", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Roteiro> roteiros;
 
-	public void addRoteiro(Roteiro roteiro) {
-		if (Objects.isNull(this.roteiros)) {
-			this.roteiros = new ArrayList<>();
-		}
-		this.roteiros.add(roteiro);
+	// public void addRoteiro(Roteiro roteiro) {
+	// if (Objects.isNull(this.roteiros)) {
+	// this.roteiros = new ArrayList<>();
+	// }
+	// this.roteiros.add(roteiro);
+	// }
+
+	public Curso() {
+	}
+
+	public Curso(String nome, String detalhes) {
+		super();
+		this.nome = nome;
+		this.detalhes = detalhes;
 	}
 
 	public Long getId() {

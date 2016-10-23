@@ -1,4 +1,4 @@
-package com.gmatuella.gastromatic.webservice;
+package com.gmatuella.gastromatic.service;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import com.gmatuella.gastromatic.repository.CursoRepository;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value = "/cursos")
-public class CursoResource {
+public class CursoService {
 
 	@Autowired
 	private CursoRepository cursoRepo;
