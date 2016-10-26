@@ -1,6 +1,7 @@
 package com.gmatuella.gastromatic.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -41,6 +42,8 @@ public class Aula implements Serializable {
 	private List<Roteiro> roteiros;
 	@ManyToMany(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Receita> receitas;
+	@Column(name = "data_aula", nullable = false)
+	private LocalDateTime dataAula;
 	private String usuario;
 
 	public Long getId() {
@@ -91,10 +94,19 @@ public class Aula implements Serializable {
 		this.usuario = usuario;
 	}
 
+	public LocalDateTime getDataAula() {
+		return dataAula;
+	}
+
+	public void setDataAula(LocalDateTime dataAula) {
+		this.dataAula = dataAula;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((dataAula == null) ? 0 : dataAula.hashCode());
 		result = prime * result + ((detalhes == null) ? 0 : detalhes.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -113,6 +125,11 @@ public class Aula implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Aula other = (Aula) obj;
+		if (dataAula == null) {
+			if (other.dataAula != null)
+				return false;
+		} else if (!dataAula.equals(other.dataAula))
+			return false;
 		if (detalhes == null) {
 			if (other.detalhes != null)
 				return false;

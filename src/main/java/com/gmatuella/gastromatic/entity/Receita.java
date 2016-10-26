@@ -37,10 +37,14 @@ public class Receita implements Serializable {
 	private Long id;
 	@Column(length = 100, nullable = false)
 	private String nome;
+	@Column(name = "modo_preparo", length = 2000)
+	private String modoPreparo;
+	@Column(length = 1000)
+	private String observacao;
 	@ManyToMany(mappedBy = "receitas", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Aula> aulas;
 	@OneToMany(mappedBy = "receita", cascade = { CascadeType.ALL })
-	private List<DetalheReceita> detalhesReceita;
+	private List<ReceitaInsumo> receitaInsumo;
 
 	public Long getId() {
 		return id;
@@ -58,6 +62,22 @@ public class Receita implements Serializable {
 		this.nome = nome;
 	}
 
+	public String getModoPreparo() {
+		return modoPreparo;
+	}
+
+	public void setModoPreparo(String modoPreparo) {
+		this.modoPreparo = modoPreparo;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
 	public List<Aula> getAulas() {
 		return aulas;
 	}
@@ -66,12 +86,12 @@ public class Receita implements Serializable {
 		this.aulas = aulas;
 	}
 
-	public List<DetalheReceita> getDetalhesReceita() {
-		return detalhesReceita;
+	public List<ReceitaInsumo> getReceitaInsumo() {
+		return receitaInsumo;
 	}
 
-	public void setDetalhesReceita(List<DetalheReceita> detalhesReceita) {
-		this.detalhesReceita = detalhesReceita;
+	public void setReceitaInsumo(List<ReceitaInsumo> receitaInsumo) {
+		this.receitaInsumo = receitaInsumo;
 	}
 
 	@Override
@@ -79,9 +99,11 @@ public class Receita implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((aulas == null) ? 0 : aulas.hashCode());
-		result = prime * result + ((detalhesReceita == null) ? 0 : detalhesReceita.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((modoPreparo == null) ? 0 : modoPreparo.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((observacao == null) ? 0 : observacao.hashCode());
+		result = prime * result + ((receitaInsumo == null) ? 0 : receitaInsumo.hashCode());
 		return result;
 	}
 
@@ -99,20 +121,30 @@ public class Receita implements Serializable {
 				return false;
 		} else if (!aulas.equals(other.aulas))
 			return false;
-		if (detalhesReceita == null) {
-			if (other.detalhesReceita != null)
-				return false;
-		} else if (!detalhesReceita.equals(other.detalhesReceita))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (modoPreparo == null) {
+			if (other.modoPreparo != null)
+				return false;
+		} else if (!modoPreparo.equals(other.modoPreparo))
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
+			return false;
+		if (observacao == null) {
+			if (other.observacao != null)
+				return false;
+		} else if (!observacao.equals(other.observacao))
+			return false;
+		if (receitaInsumo == null) {
+			if (other.receitaInsumo != null)
+				return false;
+		} else if (!receitaInsumo.equals(other.receitaInsumo))
 			return false;
 		return true;
 	}

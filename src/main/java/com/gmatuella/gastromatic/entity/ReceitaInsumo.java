@@ -9,22 +9,21 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.gmatuella.gastromatic.entity.DetalheReceita.PK;
+import com.gmatuella.gastromatic.entity.ReceitaInsumo.PK;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 @Entity
-@Table(name = "detalhe_receita")
+@Table(name = "receita_insumo")
 @IdClass(PK.class)
 @XmlRootElement
 @JsonIdentityInfo(generator = JSOGGenerator.class)
-public class DetalheReceita {
+public class ReceitaInsumo {
 
 	@Column(nullable = false, name = "quantidade_insumo")
-	private Integer quantidadeInsumo;
+	private Double quantidadeInsumo;
 
 	@Id
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
@@ -34,11 +33,11 @@ public class DetalheReceita {
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private Insumo insumo;
 
-	public Integer getQuantidadeInsumo() {
+	public Double getQuantidadeInsumo() {
 		return quantidadeInsumo;
 	}
 
-	public void setQuantidadeInsumo(Integer quantidadeInsumo) {
+	public void setQuantidadeInsumo(Double quantidadeInsumo) {
 		this.quantidadeInsumo = quantidadeInsumo;
 	}
 
