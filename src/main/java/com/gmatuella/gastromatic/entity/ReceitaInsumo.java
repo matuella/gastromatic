@@ -22,8 +22,8 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 @JsonIdentityInfo(generator = JSOGGenerator.class)
 public class ReceitaInsumo {
 
-	@Column(nullable = false, name = "quantidade_insumo")
-	private Double quantidadeInsumo;
+	@Column(nullable = false, name = "qtd_insumo")
+	private Double qtdInsumo;
 
 	@Id
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
@@ -33,12 +33,12 @@ public class ReceitaInsumo {
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private Insumo insumo;
 
-	public Double getQuantidadeInsumo() {
-		return quantidadeInsumo;
+	public Double getQtdInsumo() {
+		return qtdInsumo;
 	}
 
-	public void setQuantidadeInsumo(Double quantidadeInsumo) {
-		this.quantidadeInsumo = quantidadeInsumo;
+	public void setQtdInsumo(Double qtdInsumo) {
+		this.qtdInsumo = qtdInsumo;
 	}
 
 	public Receita getReceita() {
@@ -56,6 +56,7 @@ public class ReceitaInsumo {
 	public void setInsumo(Insumo insumo) {
 		this.insumo = insumo;
 	}
+
 
 	public static class PK implements Serializable {
 

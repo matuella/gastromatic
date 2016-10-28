@@ -37,7 +37,7 @@ public class Insumo implements Serializable {
 	@Column(name = "qtd_atual", nullable = false)
 	private Integer qtdAtual;
 	@Column(nullable = false)
-	private Double perecivel;
+	private Boolean perecivel;
 
 	private String medida;
 	private String categoria;
@@ -74,11 +74,11 @@ public class Insumo implements Serializable {
 		this.qtdAtual = qtdAtual;
 	}
 
-	public Double getPerecivel() {
+	public Boolean getPerecivel() {
 		return perecivel;
 	}
 
-	public void setPerecivel(Double perecivel) {
+	public void setPerecivel(Boolean perecivel) {
 		this.perecivel = perecivel;
 	}
 
