@@ -39,31 +39,31 @@ INSERT INTO aula_receitas (aulas_id, receitas_id) VALUES (3,7);
 INSERT INTO aula_receitas (aulas_id, receitas_id) VALUES (3,8);
 
 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual) VALUES ('Cebola', 20, 100); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual) VALUES ('Maionese', 20, 100); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual) VALUES ('Tomate', 20, 100); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual) VALUES ('Pimenta do Reino', 20, 100); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual) VALUES ('Abacate', 20, 100); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual) VALUES ('Tempero Verde', 20, 100); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual) VALUES ('Camarão', 20, 100); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Cebola', 20, 100, 0); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Maionese', 20, 100, 0); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Tomate', 20, 100, 0); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Pimenta do Reino', 20, 100, 0); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Abacate', 20, 100, 1); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Tempero Verde', 20, 100, 1); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Camarão', 20, 100, 1); 
 
 
 
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (1,1,2);
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (3,1,3);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (1,1,2);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (3,1,3);
 
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (5,2,250);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (5,2,250);
 
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (4,3,3);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (4,3,3);
 
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (2,4,300);
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (7,4,800);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (2,4,300);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (7,4,800);
 
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (6,5,2);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (6,5,2);
 
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (1,6,3);
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (2,6,200);
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (3,6,4);
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (7,6,300);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (1,6,3);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (2,6,200);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (3,6,4);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (7,6,300);
 
-INSERT INTO receita_insumo (insumo_id, receita_id, quantidade_insumo) VALUES (5,7,2);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (5,7,2);

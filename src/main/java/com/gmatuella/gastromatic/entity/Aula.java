@@ -42,7 +42,7 @@ public class Aula implements Serializable {
 	private List<Roteiro> roteiros;
 	@ManyToMany(cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Receita> receitas;
-	@Column(name = "data_aula", nullable = false)
+	@Column(name = "data_aula")//adc nulo depois dos testes
 	private LocalDateTime dataAula;
 	private String usuario;
 

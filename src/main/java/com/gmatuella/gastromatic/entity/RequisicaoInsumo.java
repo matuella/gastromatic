@@ -12,12 +12,12 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.gmatuella.gastromatic.entity.ReceitaInsumo.PK;
+import com.gmatuella.gastromatic.entity.RequisicaoInsumo.RequisicaoInsumoPK;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 @Entity
 @Table(name = "requisicao_insumo")
-@IdClass(PK.class)
+@IdClass(RequisicaoInsumoPK.class)
 @XmlRootElement
 @JsonIdentityInfo(generator = JSOGGenerator.class)
 public class RequisicaoInsumo {
@@ -79,7 +79,7 @@ public class RequisicaoInsumo {
 		this.solicitacao = solicitacao;
 	}
 
-	public static class PK implements Serializable {
+	public static class RequisicaoInsumoPK implements Serializable {
 
 		private static final long serialVersionUID = 1L;
 
