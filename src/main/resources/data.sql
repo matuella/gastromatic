@@ -39,13 +39,13 @@ INSERT INTO aula_receitas (aulas_id, receitas_id) VALUES (3,7);
 INSERT INTO aula_receitas (aulas_id, receitas_id) VALUES (3,8);
 
 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Cebola', 20, 100, 0); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Maionese', 20, 100, 0); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Tomate', 20, 100, 0); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Pimenta do Reino', 20, 100, 0); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Abacate', 20, 100, 1); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Tempero Verde', 20, 100, 1); 
-INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Camarão', 20, 100, 1); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Cebola', 20, 100, FALSE); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Maionese', 20, 100, FALSE); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Tomate', 20, 100, FALSE); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Pimenta do Reino', 20, 100, FALSE); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Abacate', 20, 100, TRUE); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Tempero Verde', 20, 100, TRUE); 
+INSERT INTO insumo (nome, qtd_minima, qtd_atual, perecivel) VALUES ('Camarão', 20, 100, TRUE); 
 
 
 
