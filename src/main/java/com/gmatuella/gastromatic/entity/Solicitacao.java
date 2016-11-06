@@ -2,13 +2,16 @@ package com.gmatuella.gastromatic.entity;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,6 +36,8 @@ public class Solicitacao implements Serializable {
 	@Column(name = "IMG_NOTA")
 	private byte[] imgNota;
 	private Boolean recebida = false;
+	@OneToMany(mappedBy = "solicitacao", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
+	private List<RequisicaoInsumo> requisicoesInsumo;
 	private Double valor;
 
 	public Long getId() {
@@ -59,6 +64,14 @@ public class Solicitacao implements Serializable {
 		this.recebida = recebida;
 	}
 
+	public List<RequisicaoInsumo> getRequisicoesInsumo() {
+		return requisicoesInsumo;
+	}
+
+	public void setRequisicoesInsumo(List<RequisicaoInsumo> requisicoesInsumo) {
+		this.requisicoesInsumo = requisicoesInsumo;
+	}
+
 	public Double getValor() {
 		return valor;
 	}
@@ -74,6 +87,7 @@ public class Solicitacao implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + Arrays.hashCode(imgNota);
 		result = prime * result + ((recebida == null) ? 0 : recebida.hashCode());
+		result = prime * result + ((requisicoesInsumo == null) ? 0 : requisicoesInsumo.hashCode());
 		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		return result;
 	}
@@ -98,6 +112,11 @@ public class Solicitacao implements Serializable {
 			if (other.recebida != null)
 				return false;
 		} else if (!recebida.equals(other.recebida))
+			return false;
+		if (requisicoesInsumo == null) {
+			if (other.requisicoesInsumo != null)
+				return false;
+		} else if (!requisicoesInsumo.equals(other.requisicoesInsumo))
 			return false;
 		if (valor == null) {
 			if (other.valor != null)
