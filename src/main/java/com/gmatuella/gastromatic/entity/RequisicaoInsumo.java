@@ -1,7 +1,5 @@
 package com.gmatuella.gastromatic.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +10,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.gmatuella.gastromatic.entity.RequisicaoInsumo.RequisicaoInsumoPK;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 @Entity
@@ -77,40 +74,6 @@ public class RequisicaoInsumo {
 
 	public void setSolicitacao(Solicitacao solicitacao) {
 		this.solicitacao = solicitacao;
-	}
-
-	public static class RequisicaoInsumoPK implements Serializable {
-
-		private static final long serialVersionUID = 1L;
-
-		private Requisicao requisicao;
-		private Insumo insumo;
-		private Solicitacao solicitacao;
-
-		public Requisicao getRequisicao() {
-			return requisicao;
-		}
-
-		public void setRequisicao(Requisicao requisicao) {
-			this.requisicao = requisicao;
-		}
-
-		public Insumo getInsumo() {
-			return insumo;
-		}
-
-		public void setInsumo(Insumo insumo) {
-			this.insumo = insumo;
-		}
-
-		public Solicitacao getSolicitacao() {
-			return solicitacao;
-		}
-
-		public void setSolicitacao(Solicitacao solicitacao) {
-			this.solicitacao = solicitacao;
-		}
-
 	}
 
 }

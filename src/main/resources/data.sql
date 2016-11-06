@@ -54,7 +54,10 @@ INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (3,1,3);
 
 INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (5,2,250);
 
-INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (4,3,3);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (3,3,5);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (4,3,100);
+INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (5,3,3);
+
 
 INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (2,4,300);
 INSERT INTO receita_insumo (insumo_id, receita_id, qtd_insumo) VALUES (7,4,800);

@@ -57,7 +57,6 @@ public class ReceitaInsumo {
 		this.insumo = insumo;
 	}
 
-
 	public static class ReceitaInsumoPK implements Serializable {
 
 		private static final long serialVersionUID = 1L;
@@ -79,6 +78,37 @@ public class ReceitaInsumo {
 
 		public void setInsumo(Insumo insumo) {
 			this.insumo = insumo;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((insumo == null) ? 0 : insumo.hashCode());
+			result = prime * result + ((receita == null) ? 0 : receita.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			ReceitaInsumoPK other = (ReceitaInsumoPK) obj;
+			if (insumo == null) {
+				if (other.insumo != null)
+					return false;
+			} else if (!insumo.equals(other.insumo))
+				return false;
+			if (receita == null) {
+				if (other.receita != null)
+					return false;
+			} else if (!receita.equals(other.receita))
+				return false;
+			return true;
 		}
 
 	}

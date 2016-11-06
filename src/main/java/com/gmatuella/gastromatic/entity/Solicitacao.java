@@ -32,8 +32,7 @@ public class Solicitacao implements Serializable {
 	@Lob
 	@Column(name = "IMG_NOTA")
 	private byte[] imgNota;
-	@Column(nullable = false)
-	private Boolean recebida;
+	private Boolean recebida = false;
 	private Double valor;
 
 	public Long getId() {

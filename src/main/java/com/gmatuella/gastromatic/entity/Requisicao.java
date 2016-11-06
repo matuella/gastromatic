@@ -37,7 +37,7 @@ public class Requisicao implements Serializable {
 	@Column(length = 50)
 	private String tipo;
 	private Double valor;
-	@OneToMany(mappedBy = "requisicao", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "requisicao", cascade = { CascadeType.REFRESH, CascadeType.MERGE })
 	private List<RequisicaoInsumo> requisicoesInsumo;
 
 	private String usuario;
